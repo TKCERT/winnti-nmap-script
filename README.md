@@ -21,7 +21,34 @@ YOU WILL RESET THE CURRENT CONNECTION IF THERE IS ONE.*
 # Requirements
 
 This script needs **liblua 5.3** to work. You may want to download the latest Nmap
-version to get support out of the box (confirmed working with Nmap 7.25BETA2).
+version to get support out of the box (confirmed working with Nmap 7.25BETA2 and 7.60).
+
+# Installation
+
+```
+user@mint ~/src $ wget https://raw.githubusercontent.com/TKCERT/winnti-nmap-script/master/winnti-detect.nse
+user@mint ~/src $ wget https://nmap.org/dist/nmap-7.60.tar.bz2
+user@mint ~/src $ tar xvf nmap-7.60.tar.bz2
+user@mint ~/src $ cd nmap-7.60
+user@mint ~/src/nmap-7.60 $ apt install build-essential
+user@mint ~/src/nmap-7.60 $ ./configure && make
+user@mint ~/src/nmap-7.60 $ ./nmap -sT 127.0.0.1 -p 80,631 --script ../winnti-detect.nse
+
+Starting Nmap 7.60 ( https://nmap.org ) at 2018-03-10 12:25 CET
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.0018s latency).
+
+PORT    STATE  SERVICE
+80/tcp  closed http
+631/tcp open   ipp
+
+Host script results:
+| winnti-detect:
+|   PORTS
+|_      631 clean
+
+Nmap done: 1 IP address (1 host up) scanned in 0.33 seconds
+```
 
 # Show script help
 
