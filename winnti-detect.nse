@@ -262,7 +262,7 @@ end
 --------------------------------------------------------------------------------
 function wnti_get_helo_pkt()
   local l1 = math.random(1, 0xffffffff);
-  local l2 = os.time()
+  local l2 = math.random(1, 0xffffffff);
   local l3 = math.random(1, 0xffffffff);
 
   local t3 = ( ( (l3 & 0xffff) << 16) | ((l3 & 0xffff0000) >> 16) )
